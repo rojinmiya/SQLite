@@ -25,13 +25,22 @@ public class MainActivity extends AppCompatActivity {
         btnAddWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(myHelper.InsertData(etWord.getText().toString(),etMeaning.getText().toString(),sqLiteDatabase))
-                {
-                    Toast.makeText(MainActivity.this,"succesafull", Toast.LENGTH_LONG).show();
+
+                long id=myHelper.InsertData(etWord.getText().toString(),etMeaning.getText().toString(),sqLiteDatabase);
+                if(id>0){
+                    Toast.makeText(MainActivity.this,"Successfull"+id,Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(MainActivity.this,"Error",Toast.LENGTH_SHORT).show();
+
                 }
-                else {
-                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
-                }
+//                if(myHelper.InsertData(etWord.getText().toString(),etMeaning.getText().toString(),sqLiteDatabase))
+//                {
+//                    Toast.makeText(MainActivity.this,"succesafull", Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+//                }
             }
         });
 
